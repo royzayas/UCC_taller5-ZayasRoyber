@@ -5,7 +5,7 @@ import mysql.connector
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-STATIC_DIR = os.path.join(BASE_DIR, "static")
+STATIC_DIR = os.path.join(BASE_DIR, "estilos")
 
 class App:
     @cherrypy.expose
@@ -17,7 +17,7 @@ class App:
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Registro Paciente</title>
-            <link rel="stylesheet" href="/static/estilos.css">
+            <link rel="stylesheet" href="/estilos/estilos.css">
         </head>
         <body class="bg-light">
             <div class="container py-4">
@@ -206,7 +206,7 @@ if __name__ == "__main__":
     })
 
     conf = {
-        "/static": {
+        "/estilos": {
             "tools.staticdir.on": True,
             "tools.staticdir.dir": STATIC_DIR
         }
