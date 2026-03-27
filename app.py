@@ -7,7 +7,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
-
 class App:
     @cherrypy.expose
     def index(self):
@@ -20,76 +19,103 @@ class App:
             <title>Registro Paciente</title>
             <link rel="stylesheet" href="/static/estilos.css">
         </head>
-        <body>
-            <div class="container">
-                <h1>Registro de Paciente</h1>
+        <body class="bg-light">
+            <div class="container py-4">
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <h1 class="mb-2">Registro de Paciente</h1>
+                    <p class="subtitulo text-muted">Ingresa los datos del paciente y la visita médica</p>
 
-                <form action="/guardar" method="POST">
-                    <label>Nombre completo</label>
-                    <input type="text" name="nombre_paciente" required>
+                    <form action="/guardar" method="POST">
+                        <fieldset class="border rounded p-3 mb-4">
+                            <legend class="float-none w-auto px-2">Datos del Paciente</legend>
 
-                    <label>Fecha de Nacimiento</label>
-                    <input type="date" name="fecha_nacimiento" required>
+                            <div class="mb-3">
+                                <label class="form-label">Nombre completo</label>
+                                <input type="text" name="nombre_paciente" class="form-control" required>
+                            </div>
 
-                    <label>Género</label>
-                    <select name="genero_paciente" required>
-                        <option value="">Seleccionar</option>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
-                        <option value="O">Otro</option>
-                    </select>
+                            <div class="mb-3">
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" name="fecha_nacimiento" class="form-control" required>
+                            </div>
 
-                    <label>Fecha de visita</label>
-                    <input type="date" name="fecha_visita">
+                            <div class="mb-3">
+                                <label class="form-label">Género</label>
+                                <select name="genero_paciente" class="form-select" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="O">Otro</option>
+                                </select>
+                            </div>
+                        </fieldset>
 
-                    <label>Nombre del médico</label>
-                    <input type="text" name="nombreMedico">
+                        <fieldset class="border rounded p-3 mb-4">
+                            <legend class="float-none w-auto px-2">Datos de la Visita</legend>
 
-                    <label>Género del médico</label>
-                    <select name="generoMedicos" required>
-                        <option value="">Seleccionar</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                        <option value="Otro">Otro</option>
-                    </select>
+                            <div class="mb-3">
+                                <label class="form-label">Fecha de visita</label>
+                                <input type="date" name="fecha_visita" class="form-control">
+                            </div>
 
-                    <label>Cargo del médico</label>
-                    <select name="cargoMedico">
-                        <option value="">Seleccionar</option>
-                        <option value="Medico general">Médico general</option>
-                        <option value="Especialista - Pediatra">Especialista - Pediatra</option>
-                        <option value="Especialista - Ginecologo">Especialista - Ginecólogo</option>
-                        <option value="Especialista - Cardiologo">Especialista - Cardiólogo</option>
-                        <option value="Especialista - Neumologo">Especialista - Neumólogo</option>
-                        <option value="Especialista - Neurologo">Especialista - Neurólogo</option>
-                        <option value="Cirujano">Cirujano</option>
-                        <option value="Anestesiologo">Anestesiólogo</option>
-                        <option value="Internista">Internista</option>
-                        <option value="Ortopedista">Ortopedista</option>
-                        <option value="Psiquiatra">Psiquiatra</option>
-                        <option value="Endocrinologo">Endocrinólogo</option>
-                        <option value="Gastroenterologo">Gastroenterólogo</option>
-                        <option value="Fisioterapeuta">Fisioterapeuta</option>
-                        <option value="Dermatologo">Dermatólogo</option>
-                        <option value="Oftalmologo">Oftalmólogo</option>
-                        <option value="Odontologo">Odontólogo</option>
-                        <option value="Otro">Otro</option>
-                    </select>
+                            <div class="mb-3">
+                                <label class="form-label">Nombre del médico</label>
+                                <input type="text" name="nombreMedico" class="form-control">
+                            </div>
 
-                    <label>¿Se recetaron medicamentos?</label>
-                    <select name="recetaronMedicamentos">
-                        <option value="">Seleccionar</option>
-                        <option value="Si">Si</option>
-                        <option value="No">No</option>
-                    </select>
+                            <div class="mb-3">
+                                <label class="form-label">Género del médico</label>
+                                <select name="generoMedicos" class="form-select" required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
 
-                    <label>
-                        <input type="checkbox" name="recibioMedicamento" value="1">
-                        Recibió medicamento
-                    </label>
+                            <div class="mb-3">
+                                <label class="form-label">Cargo del médico</label>
+                                <select name="cargoMedico" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="Medico general">Médico general</option>
+                                    <option value="Especialista - Pediatra">Especialista — Pediatra</option>
+                                    <option value="Especialista - Ginecologo">Especialista — Ginecólogo</option>
+                                    <option value="Especialista - Cardiologo">Especialista — Cardiólogo</option>
+                                    <option value="Especialista - Neumologo">Especialista — Neumólogo</option>
+                                    <option value="Especialista - Neurologo">Especialista — Neurólogo</option>
+                                    <option value="Cirujano">Cirujano</option>
+                                    <option value="Anestesiologo">Anestesiólogo</option>
+                                    <option value="Internista">Internista</option>
+                                    <option value="Ortopedista">Ortopedista</option>
+                                    <option value="Psiquiatra">Psiquiatra</option>
+                                    <option value="Endocrinologo">Endocrinólogo</option>
+                                    <option value="Gastroenterologo">Gastroenterólogo</option>
+                                    <option value="Fisioterapeuta">Fisioterapeuta</option>
+                                    <option value="Dermatologo">Dermatólogo</option>
+                                    <option value="Oftalmologo">Oftalmólogo</option>
+                                    <option value="Odontologo">Odontólogo</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
 
-                    <button type="submit">Guardar</button>
-                </form>
+                            <div class="mb-3">
+                                <label class="form-label">¿Se recetaron medicamentos?</label>
+                                <select name="recetaronMedicamentos" class="form-select">
+                                    <option value="">Seleccionar</option>
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-check mb-3">
+                                <input type="checkbox" name="recibioMedicamento" value="1" class="form-check-input" id="recibioMedicamento">
+                                <label class="form-check-label" for="recibioMedicamento">Recibió medicamento</label>
+                            </div>
+                        </fieldset>
+
+                        <button type="submit" class="btn btn-primary w-100">Guardar</button>
+                    </form>
+                </div>
             </div>
         </body>
         </html>
@@ -126,11 +152,9 @@ class App:
         id_paciente = cursor.lastrowid
 
         cursor.execute(
-            """
-            INSERT INTO visitas
-            (id_paciente, fecha_visita, nombre_medico, genero_medicos, cargo_medico, recibio_medicamento, recetaronmedicamentos)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """,
+            """INSERT INTO visitas
+               (id_paciente, fecha_visita, nombre_medico, genero_medicos, cargo_medico, recibio_medicamento, recetaronmedicamentos)
+               VALUES (%s, %s, %s, %s, %s, %s, %s)""",
             (id_paciente, fecha_visita, nombreMedico, generoMedicos, cargoMedico, recibio, recetaron)
         )
         id_visita = cursor.lastrowid
@@ -147,7 +171,6 @@ class App:
             "fecha_nacimiento": fecha_nacimiento,
             "genero": genero_paciente
         }
-
         visita = {
             "id_visita": id_visita,
             "id_paciente": id_paciente,
@@ -166,22 +189,15 @@ class App:
             f.write(json.dumps(visita, ensure_ascii=False) + "\n")
 
         with open(os.path.join(DATA_DIR, "pacientes.txt"), "a", encoding="utf-8") as f:
-            f.write(
-                f"Paciente: {nombre_paciente} | ID: {id_paciente} | "
-                f"Fecha Nac: {fecha_nacimiento} | Genero: {genero_paciente}\n"
-            )
+            f.write(f"Paciente: {nombre_paciente} | ID: {id_paciente} | Fecha Nac: {fecha_nacimiento} | Genero: {genero_paciente}\n")
 
         with open(os.path.join(DATA_DIR, "visitas.txt"), "a", encoding="utf-8") as f:
-            f.write(
-                f"Visita: {id_visita} | Paciente: {nombre_paciente} | "
-                f"Fecha Visita: {fecha_visita} | Medico: {nombreMedico}\n"
-            )
+            f.write(f"Visita: {id_visita} | Paciente: {nombre_paciente} | Fecha Visita: {fecha_visita} | Medico: {nombreMedico}\n")
 
         return """
         <h2>Guardado correctamente</h2>
         <a href="/">Volver</a>
         """
-
 
 if __name__ == "__main__":
     cherrypy.config.update({
