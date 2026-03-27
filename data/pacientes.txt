@@ -3,3 +3,4 @@ Paciente: Juan David Fuentes | ID: 27 | Fecha Nac: 2004-03-11 | Genero: M
 Paciente: Steph garcia | ID: 28 | Fecha Nac: 2006-08-25 | Genero: M
 Paciente: Royber Zayas | ID: 29 | Fecha Nac: 2006-08-04 | Genero: M
 Paciente: Eduard Uribe | ID: 30 | Fecha Nac: 2007-04-29 | Genero: M
+Paciente: Damaris Sierra | ID: 31 | Fecha Nac: 1966-04-12 | Genero: F
