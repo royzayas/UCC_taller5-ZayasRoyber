@@ -1,8 +1,10 @@
 import os
+import json
 import cherrypy
 import mysql.connector
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 
@@ -57,6 +59,20 @@ class App:
                         <option value="Medico general">Médico general</option>
                         <option value="Especialista - Pediatra">Especialista - Pediatra</option>
                         <option value="Especialista - Ginecologo">Especialista - Ginecólogo</option>
+                        <option value="Especialista - Cardiologo">Especialista - Cardiólogo</option>
+                        <option value="Especialista - Neumologo">Especialista - Neumólogo</option>
+                        <option value="Especialista - Neurologo">Especialista - Neurólogo</option>
+                        <option value="Cirujano">Cirujano</option>
+                        <option value="Anestesiologo">Anestesiólogo</option>
+                        <option value="Internista">Internista</option>
+                        <option value="Ortopedista">Ortopedista</option>
+                        <option value="Psiquiatra">Psiquiatra</option>
+                        <option value="Endocrinologo">Endocrinólogo</option>
+                        <option value="Gastroenterologo">Gastroenterólogo</option>
+                        <option value="Fisioterapeuta">Fisioterapeuta</option>
+                        <option value="Dermatologo">Dermatólogo</option>
+                        <option value="Oftalmologo">Oftalmólogo</option>
+                        <option value="Odontologo">Odontólogo</option>
                         <option value="Otro">Otro</option>
                     </select>
 
@@ -123,10 +139,46 @@ class App:
         cursor.close()
         conexion.close()
 
-        return f"""
+        os.makedirs(DATA_DIR, exist_ok=True)
+
+        paciente = {
+            "id_paciente": id_paciente,
+            "nombre": nombre_paciente,
+            "fecha_nacimiento": fecha_nacimiento,
+            "genero": genero_paciente
+        }
+
+        visita = {
+            "id_visita": id_visita,
+            "id_paciente": id_paciente,
+            "fecha_visita": fecha_visita,
+            "nombre_medico": nombreMedico,
+            "genero_medicos": generoMedicos,
+            "cargo_medico": cargoMedico,
+            "recibio_medicamento": recibio,
+            "recetaronmedicamentos": recetaron
+        }
+
+        with open(os.path.join(DATA_DIR, "pacientes.json"), "a", encoding="utf-8") as f:
+            f.write(json.dumps(paciente, ensure_ascii=False) + "\n")
+
+        with open(os.path.join(DATA_DIR, "visitas.json"), "a", encoding="utf-8") as f:
+            f.write(json.dumps(visita, ensure_ascii=False) + "\n")
+
+        with open(os.path.join(DATA_DIR, "pacientes.txt"), "a", encoding="utf-8") as f:
+            f.write(
+                f"Paciente: {nombre_paciente} | ID: {id_paciente} | "
+                f"Fecha Nac: {fecha_nacimiento} | Genero: {genero_paciente}\n"
+            )
+
+        with open(os.path.join(DATA_DIR, "visitas.txt"), "a", encoding="utf-8") as f:
+            f.write(
+                f"Visita: {id_visita} | Paciente: {nombre_paciente} | "
+                f"Fecha Visita: {fecha_visita} | Medico: {nombreMedico}\n"
+            )
+
+        return """
         <h2>Guardado correctamente</h2>
-        <p>Paciente ID: {id_paciente}</p>
-        <p>Visita ID: {id_visita}</p>
         <a href="/">Volver</a>
         """
 
