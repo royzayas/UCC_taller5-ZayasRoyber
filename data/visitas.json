@@ -1,0 +1,5 @@
+{"id_visita":6,"id_paciente":26,"fecha_visita":"2026-03-17","nombre_medico":"Luisa Pacheco","genero_medicos":"Femenino","cargo_medico":"Psiquiatra","recibio_medicamento":1,"recetaronmedicamentos":1}
+{"id_visita":7,"id_paciente":27,"fecha_visita":"2026-03-18","nombre_medico":"Zantick Rodriguez","genero_medicos":"Masculino","cargo_medico":"Internista","recibio_medicamento":1,"recetaronmedicamentos":1}
+{"id_visita":8,"id_paciente":28,"fecha_visita":"2025-03-11","nombre_medico":"Michell Galvan","genero_medicos":"Femenino","cargo_medico":"Medico general","recibio_medicamento":1,"recetaronmedicamentos":1}
+{"id_visita": 9, "id_paciente": 29, "fecha_visita": "2026-03-06", "nombre_medico": "Michell Galván", "genero_medicos": "Femenino", "cargo_medico": "Medico general", "recibio_medicamento": 0, "recetaronmedicamentos": 1}
+{"id_visita": 10, "id_paciente": 30, "fecha_visita": "2026-03-19", "nombre_medico": "Sofia Valverde", "genero_medicos": "Femenino", "cargo_medico": "Odontologo", "recibio_medicamento": 1, "recetaronmedicamentos": 1}
